@@ -136,7 +136,6 @@ margin-top:30px;
 }
 
 </style>
-
 </head>
 
 <body>
@@ -225,7 +224,14 @@ May this year bring you everything your heart deserves. 🤍
 Thank you for being you. 🤍
 </p>
 
+<br><br>
+
+<button onclick="replaySurprise()">
+Replay Surprise 🤍
+</button>
+
 </div>
+
 
 
 <script>
@@ -239,11 +245,13 @@ alert("Please enter your name.");
 return;
 }
 
-// Play Music
-document.getElementById("bgMusic").play();
+// Start Music
+const music = document.getElementById("bgMusic");
+music.currentTime = 0;
+music.play();
 
 // Show Name
-document.getElementById("name1").innerHTML=name;
+document.getElementById("name1").innerHTML = name;
 
 // Change Page
 document.getElementById("page1").classList.add("hidden");
@@ -264,6 +272,27 @@ function showPage4(){
 
 document.getElementById("page3").classList.add("hidden");
 document.getElementById("page4").classList.remove("hidden");
+
+}
+
+
+function replaySurprise(){
+
+// Stop Music
+const music = document.getElementById("bgMusic");
+music.pause();
+music.currentTime = 0;
+
+// Hide pages
+document.getElementById("page2").classList.add("hidden");
+document.getElementById("page3").classList.add("hidden");
+document.getElementById("page4").classList.add("hidden");
+
+// Clear input
+document.getElementById("username").value = "";
+
+// Show first page
+document.getElementById("page1").classList.remove("hidden");
 
 }
 
