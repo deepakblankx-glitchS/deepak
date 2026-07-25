@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Birthday Surprise</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#ffe6f2;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.container{
+    text-align:center;
+}
+
+input{
+    padding:12px;
+    width:250px;
+    border-radius:10px;
+    border:none;
+}
+
+button{
+    padding:12px 20px;
+    margin-top:15px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+#wish{
+    display:none;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container" id="home">
+
+<h2>Enter Your Name</h2>
+
+<input type="text" id="username"
+placeholder="Type your name">
+
+<br>
+
+<button onclick="showWish()">
+Open Surprise
+</button>
+
+</div>
+
+
+<div class="container" id="wish">
+
+<h1>🎉 HAPPY BIRTHDAY 🎉</h1>
+
+<img src="https://via.placeholder.com/250"
+width="250">
+
+<p>
+Many more happy returns of the day!
+</p>
+
+<p>
+Wishing you lots of happiness, smiles and success.
+</p>
+
+</div>
+
+
+<script>
+
+function showWish(){
+
+let name=document.getElementById("username").value;
+
+if(name==""){
+alert("Please enter your name");
+return;
+}
+
+document.getElementById("home").style.display="none";
+document.getElementById("wish").style.display="block";
+
+}
+
+</script>
+
+</body>
+</html>
