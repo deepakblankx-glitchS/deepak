@@ -1,94 +1,264 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Birthday Surprise</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Special Surprise</title>
 
 <style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
 body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:#ffe6f2;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
+font-family:Arial,sans-serif;
+background:black;
+color:white;
+overflow:hidden;
+text-align:center;
+}
+
+/* Stars Background */
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background-image:
+radial-gradient(white 1px, transparent 1px);
+background-size:40px 40px;
+animation:twinkle 3s infinite alternate;
+z-index:-1;
+}
+
+@keyframes twinkle{
+from{
+opacity:0.5;
+}
+to{
+opacity:1;
+}
 }
 
 .container{
-    text-align:center;
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding:20px;
 }
 
 input{
-    padding:12px;
-    width:250px;
-    border-radius:10px;
-    border:none;
+padding:15px;
+border:none;
+border-radius:10px;
+width:260px;
+font-size:16px;
+margin-top:20px;
 }
 
 button{
-    padding:12px 20px;
-    margin-top:15px;
-    border:none;
-    border-radius:10px;
-    cursor:pointer;
+padding:15px 25px;
+margin-top:20px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+font-size:16px;
 }
 
-#wish{
-    display:none;
+.hidden{
+display:none;
 }
+
+h1{
+margin-bottom:15px;
+}
+
+img{
+width:280px;
+max-width:90%;
+border-radius:20px;
+box-shadow:0 0 30px white;
+margin-bottom:20px;
+}
+
+.message{
+font-size:18px;
+line-height:1.8;
+white-space:pre-line;
+}
+
+.final-message{
+font-size:24px;
+line-height:1.8;
+padding:20px;
+}
+
+.gift{
+font-size:90px;
+animation:float 2s infinite;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0px);
+}
+50%{
+transform:translateY(-15px);
+}
+100%{
+transform:translateY(0px);
+}
+}
+
+.fade{
+animation:fadeIn 2s;
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
+
 </style>
-
 </head>
 
 <body>
 
-<div class="container" id="home">
+<!-- PAGE 1 -->
 
-<h2>Enter Your Name</h2>
+<div class="container" id="page1">
 
-<input type="text" id="username"
-placeholder="Type your name">
+<h1>A Special Surprise Awaits You...</h1>
 
-<br>
+<input type="text"
+id="name"
+placeholder="Enter Your Name">
 
-<button onclick="showWish()">
+<button onclick="openGift()">
 Open Surprise
 </button>
 
 </div>
 
 
-<div class="container" id="wish">
+<!-- PAGE 2 -->
 
-<h1>🎉 HAPPY BIRTHDAY 🎉</h1>
+<div class="container hidden fade" id="page2">
 
-<img src="https://via.placeholder.com/250"
-width="250">
+<div class="gift">🎁</div>
 
-<p>
-Many more happy returns of the day!
-</p>
+<h2>Your Gift is Opening...</h2>
 
-<p>
-Wishing you lots of happiness, smiles and success.
-</p>
+</div>
+
+
+<!-- PAGE 3 -->
+
+<div class="container hidden fade" id="page3">
+
+<h1>🎉 HAPPY BIRTHDAY DEEPAK 🎉</h1>
+
+</div>
+
+
+<!-- PAGE 4 -->
+
+<div class="container hidden fade" id="page4">
+
+<img src="deepak.webp">
+
+<div class="message">
+
+Yanaku 15 days ku munnadi la wish panna theriyathu..
+
+Happy Birthday..
+
+Yethachu ithuku munnadi hurt pannirundha ah, sorry.
+
+Happy Birthday Deepak.
+
+Every star in the sky is wishing you happiness tonight. ✨
+
+</div>
+
+</div>
+
+
+<!-- PAGE 5 -->
+
+<div class="container hidden fade" id="page5">
+
+<div class="final-message">
+
+Among billions of stars,<br>
+today one shines a little brighter.<br><br>
+
+Happy Birthday, Deepak. ✨<br><br>
+
+May this year bring you everything
+your heart deserves. ❤️
+
+</div>
+
+<br>
+
+<button onclick="location.reload()">
+Replay Surprise
+</button>
 
 </div>
 
 
 <script>
 
-function showWish(){
+function openGift(){
 
-let name=document.getElementById("username").value;
+let userName =
+document.getElementById("name").value;
 
-if(name==""){
-alert("Please enter your name");
+if(userName==""){
+alert("Please enter your name.");
 return;
 }
 
-document.getElementById("home").style.display="none";
-document.getElementById("wish").style.display="block";
+document.getElementById("page1").style.display="none";
+document.getElementById("page2").classList.remove("hidden");
+
+setTimeout(function(){
+
+document.getElementById("page2").style.display="none";
+document.getElementById("page3").classList.remove("hidden");
+
+},3000);
+
+
+setTimeout(function(){
+
+document.getElementById("page3").style.display="none";
+document.getElementById("page4").classList.remove("hidden");
+
+},7000);
+
+
+setTimeout(function(){
+
+document.getElementById("page4").style.display="none";
+document.getElementById("page5").classList.remove("hidden");
+
+},18000);
 
 }
 
