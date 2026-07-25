@@ -119,6 +119,7 @@ transform:scale(1.08);
 
 img{
 width:280px;
+max-width:90%;
 border-radius:25px;
 margin:25px 0;
 box-shadow:0 0 35px #b388ff;
@@ -142,7 +143,7 @@ margin-top:30px;
 
 <!-- Background Music -->
 
-<audio autoplay loop>
+<audio id="bgMusic">
 <source src="music.mp3.m4a" type="audio/mp4">
 </audio>
 
@@ -227,7 +228,6 @@ Thank you for being you. 🤍
 </div>
 
 
-
 <script>
 
 function nextPage(){
@@ -239,12 +239,18 @@ alert("Please enter your name.");
 return;
 }
 
+// Play Music
+document.getElementById("bgMusic").play();
+
+// Show Name
 document.getElementById("name1").innerHTML=name;
 
+// Change Page
 document.getElementById("page1").classList.add("hidden");
 document.getElementById("page2").classList.remove("hidden");
 
 }
+
 
 function showPage3(){
 
@@ -252,6 +258,7 @@ document.getElementById("page2").classList.add("hidden");
 document.getElementById("page3").classList.remove("hidden");
 
 }
+
 
 function showPage4(){
 
